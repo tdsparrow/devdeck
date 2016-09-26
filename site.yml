@@ -1,0 +1,8 @@
+---
+- hosts: devdeck
+  roles:
+  - dev-base
+  - dev-editor
+  - dev-gui
+  - dev-vm
+  - dev-docker

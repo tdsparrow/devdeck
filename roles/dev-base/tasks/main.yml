@@ -1,0 +1,33 @@
+---
+
+- name: create user bin dir
+  file: name={{ home_dir }}/bin state=directory
+
+- name: add bin to path
+  lineinfile: dest={{ home_dir }}/.bashrc line="export PATH=~/bin:$PATH"
+ 
+- name: install dev base pkgs
+  when: ansible_os_family == "Archlinux"
+  pacman: name={{ item }}
+  with_items:
+    - base-devel
+    - unzip
+    - tmux
+    - strace
+    - tcpdump
+    - clang
+  become: true
+
+- name: git config
+  git_config: scope=global name={{ item.name }} value={{ item.value }}
+  with_items:
+    - name: 'user.name'
+      value: 'tdsparrow'
+    - name: 'user.email'
+      value: 'sqallowlee@gmail.com'
+
+- include: dev-python.yml
+  when: enable_python | bool    
+
+- name: create source directory
+  file: name={{ src_dir }} state=directory

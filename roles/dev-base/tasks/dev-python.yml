@@ -1,0 +1,6 @@
+---
+
+- name: install ipython
+  pacman: name=ipython
+  when: ansible_os_family == "Archlinux"
+  become: true

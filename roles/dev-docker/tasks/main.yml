@@ -1,0 +1,8 @@
+---
+
+- name: install docker
+  when: ansible_os_family == "Archlinux"
+  pacman: name={{ item }}
+  with_items:
+    - docker
+  become: true

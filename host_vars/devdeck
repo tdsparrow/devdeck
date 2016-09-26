@@ -1,0 +1,5 @@
+---
+home_dir: /home/{{ devuser }}
+src_dir: /home/{{ devuser }}/src
+
+enable_python: true
