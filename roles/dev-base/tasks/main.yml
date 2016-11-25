@@ -16,6 +16,7 @@
     - strace
     - tcpdump
     - clang
+    - graphviz
   become: true
 
 - name: git config

@@ -1,0 +1,8 @@
+---
+
+- name: install mail apps
+  when: ansible_os_family == "Archlinux"
+  pacman: name={{ item }}
+  with_items:
+    - mutt
+  become: true

@@ -35,6 +35,8 @@
       xterm*termName: xterm-256color
       xterm*eightBitInput: false
       xterm*visualBell: true
+      URxvt*visualBell: true
+      URxvt*font:xft:Terminus:style=Regular:size=12
 
       !BLK Cursor
       #define _color0        #000d18
