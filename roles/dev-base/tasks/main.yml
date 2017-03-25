@@ -5,20 +5,9 @@
 
 - name: add bin to path
   lineinfile: dest={{ home_dir }}/.bashrc line="export PATH=~/bin:$PATH"
- 
-- name: install dev base pkgs
-  when: ansible_os_family == "Archlinux"
-  pacman: name={{ item }}
-  with_items:
-    - base-devel
-    - unzip
-    - tmux
-    - strace
-    - tcpdump
-    - clang
-    - graphviz
-  become: true
 
+- include: "{{ ansible_os_family }}.yml"
+  
 - name: git config
   git_config: scope=global name={{ item.name }} value={{ item.value }}
   with_items:

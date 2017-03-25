@@ -1,0 +1,22 @@
+---
+
+- name: add eleme ssh key
+  copy:
+    src: "{{ role_path }}/files/id_qcloud_root"
+    dest: "{{ home_dir }}/.ssh"
+
+- name: ssh config dir
+  file:
+    path: "{{ home_dir }}/.ssh/config.d"
+    state: directory
+    
+- name: copy ssh config file
+  copy:
+    src: "{{ role_path }}/files/ssh_config"
+    dest: "{{ home_dir }}/.ssh/config.d/eleme"
+    
+- name: add eleme dev host config
+  lineinfile:
+    dest: "{{ home_dir }}/.ssh/config"
+    line: "Include config.d/eleme"
+

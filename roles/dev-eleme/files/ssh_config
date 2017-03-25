@@ -1,0 +1,132 @@
+Host *.vm.elenet.me
+   UserKnownHostsFile /dev/null
+   StrictHostKeyChecking no
+   ForwardAgent yes
+   User ren.li
+
+Host gate
+   HostName 192.168.65.91
+   UserKnownHostsFile /dev/null
+   StrictHostKeyChecking no
+   ForwardAgent yes
+   User codedeploy
+
+Host baolei
+   HostName 192.168.21.250
+   UserKnownHostsFile /dev/null
+   StrictHostKeyChecking no
+   ForwardAgent yes
+   User ren.li
+
+Host xg-*
+   User shwei.wang
+   Port 2014
+   UserKnownHostsFile /dev/null
+   StrictHostKeyChecking no
+   ProxyCommand  ssh gate nc -w 20 %h %p
+
+Host qc-*
+   User shwei.wang
+   Port 2014
+   UserKnownHostsFile /dev/null
+   StrictHostKeyChecking no
+   ProxyCommand  ssh gate nc -w 20 %h %p
+
+Host sh-*
+   User shwei.wang
+   Port 2014
+   UserKnownHostsFile /dev/null
+   StrictHostKeyChecking no
+   ProxyCommand  ssh gate nc -w 20 %h %p
+
+Host vpca-*
+   User codedeploy
+   UserKnownHostsFile /dev/null
+   StrictHostKeyChecking no
+   ProxyCommand  ssh gate nc -w 20 %h %p
+
+Host adct-*
+   User codedeploy
+   UserKnownHostsFile /dev/null
+   StrictHostKeyChecking no
+   ProxyCommand  ssh gate nc -w 20 %h %p
+
+Host adcz-*
+   User codedeploy
+   UserKnownHostsFile /dev/null
+   StrictHostKeyChecking no
+   ProxyCommand  ssh gate nc -w 20 %h %p
+
+Host adca-*
+   User codedeploy
+   UserKnownHostsFile /dev/null
+   StrictHostKeyChecking no
+   ProxyCommand  ssh gate nc -w 20 %h %p
+
+Host alt*.vm
+   User codedeploy
+   UserKnownHostsFile /dev/null
+   StrictHostKeyChecking no
+   ProxyCommand  ssh gate nc -w 20 %h %p
+
+Host vpcb-*
+   User codedeploy
+   UserKnownHostsFile /dev/null
+   StrictHostKeyChecking no
+   ProxyCommand  ssh gate nc -w 20 %h %p
+
+Host vpcal-*
+   User codedeploy
+   UserKnownHostsFile /dev/null
+   StrictHostKeyChecking no
+   ProxyCommand  ssh gate nc -w 20 %h %p
+
+Host 10.0.12.*
+   User shwei.wang
+   Port 2014
+   UserKnownHostsFile /dev/null
+   StrictHostKeyChecking no
+   ProxyCommand  ssh gate nc -w 20 %h %p
+
+Host 10.0.15.*
+   User shwei.wang
+   Port 2014
+   UserKnownHostsFile /dev/null
+   StrictHostKeyChecking no
+   ProxyCommand  ssh gate nc -w 20 %h %p
+
+Host 10.0.11.*
+   User shwei.wang
+   Port 2014
+   UserKnownHostsFile /dev/null
+   StrictHostKeyChecking no
+   ProxyCommand  ssh gate nc -w 20 %h %p
+
+Host 10.0.22.*
+   User shwei.wang
+   Port 2014
+   UserKnownHostsFile /dev/null
+   StrictHostKeyChecking no
+   ProxyCommand  ssh gate nc -w 20 %h %p
+
+Host 10.101.*
+   User root
+   Port 22
+   UserKnownHostsFile /dev/null
+   StrictHostKeyChecking no
+   ProxyCommand  ssh gate nc -w 20 %h %p
+
+Host 10.103.*
+   User root
+   Port 22
+   UserKnownHostsFile /dev/null
+   StrictHostKeyChecking no
+   ProxyCommand  ssh gate nc -w 20 %h %p
+
+Host 10.104.*
+   User root
+   Port 22
+   UserKnownHostsFile /dev/null
+   StrictHostKeyChecking no
+   ProxyCommand  ssh gate nc -w 20 %h %p
+ 

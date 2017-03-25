@@ -1,4 +1,5 @@
 ---
+
 - hosts: devdeck
   roles:
   - dev-base
@@ -7,3 +8,4 @@
   - dev-vm
   - dev-docker
   - dev-oa
+  - dev-eleme

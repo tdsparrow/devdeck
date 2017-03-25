@@ -1,0 +1,14 @@
+---
+
+- name: install dev base pkgs
+  pacman: name={{ item }}
+  with_items:
+    - base-devel
+    - unzip
+    - tmux
+    - strace
+    - tcpdump
+    - clang
+    - graphviz
+    - zsh
+  become: true
