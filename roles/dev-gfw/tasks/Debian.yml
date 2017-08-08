@@ -1,0 +1,7 @@
+---
+
+- name: install shadowsocks
+  apt: name={{ item }}
+  with_items:
+    - shadowsocks-libev
+  become: true
