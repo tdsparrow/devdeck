@@ -4,7 +4,7 @@
   roles:
   - dev-base
   - dev-editor
-  - dev-gui
+  - {role: 'dev-gui', tags: 'user'}
   - dev-vm
   - dev-docker
   - dev-oa

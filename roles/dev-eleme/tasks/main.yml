@@ -2,8 +2,13 @@
 
 - name: add eleme ssh key
   copy:
-    src: "{{ role_path }}/files/id_qcloud_root"
+    src: "{{ role_path }}/files/{{ item }}"
     dest: "{{ home_dir }}/.ssh"
+    mode: 0600
+  with_items:
+    - id_qcloud_root
+    - id_magic_rsa
+          
 
 - name: ssh config dir
   file:

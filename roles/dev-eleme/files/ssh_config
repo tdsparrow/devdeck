@@ -1,8 +1,10 @@
-Host *.vm.elenet.me
+Host magic-gate
+   HostName adct-network-gateway-1.vm.elenet.me
    UserKnownHostsFile /dev/null
    StrictHostKeyChecking no
+   IdentityFile ~/.ssh/id_magic_rsa		
    ForwardAgent yes
-   User ren.li
+   User codedeploy
 
 Host gate
    HostName 192.168.65.91
@@ -19,11 +21,11 @@ Host baolei
    User ren.li
 
 Host xg-*
-   User shwei.wang
+   User deploy
    Port 2014
    UserKnownHostsFile /dev/null
    StrictHostKeyChecking no
-   ProxyCommand  ssh gate nc -w 20 %h %p
+   ProxyCommand  ssh magic-gate nc -w 20 %h %p
 
 Host qc-*
    User shwei.wang
