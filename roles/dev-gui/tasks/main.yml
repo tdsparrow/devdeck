@@ -36,7 +36,7 @@
       xterm*eightBitInput: false
       xterm*visualBell: true
       URxvt*visualBell: true
-      URxvt*font:xft:Terminus:style=Regular:size=12
+      URxvt*font:xft:xos4 Terminus:style=Regular:size=12
 
       !BLK Cursor
       #define _color0        #000d18
