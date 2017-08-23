@@ -1,11 +1,7 @@
----
-- include: "{{ ansible_os_family }}.yml"
-  
 - name: install docker
-  when: ansible_os_family == "Archlinux"
   pacman: name={{ item }}
   with_items:
-    - docker
+    - docker.io
   become: true
 
 
@@ -19,4 +15,3 @@
 - name: docker service
   service: name=docker state=started enabled=yes
   become: true
-  when: ansible_os_family == "Archlinux"
