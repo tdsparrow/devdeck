@@ -8,4 +8,59 @@
     - qemu
     - nfs-utils
     - rsync
+    - virt-manager
+    - firewalld
+    - dnsmasq
+  become: true
+
+- name: start firewalld
+  systemd:
+    state: started
+    name: firewalld
+    enabled: yes
+  become: true
+  
+- name: start libvirtd
+  systemd:
+    state: started
+    name: libvirtd
+    enabled: yes
+  become: true
+  
+
+- name: update user group
+  user:
+    name: "{{ devuser }}"
+    append: yes
+    groups: libvirt
+
+- name: find nat network
+  shell: virsh net-list --all | grep virt-nat
+  register: virt_nat_network
+  ignore_errors: yes
+  become: true
+
+- name: create nat network xml file
+  template:
+    src: templates/nat-net.xml.j2
+    dest: /tmp/nat-net.xml
+
+- name: create nat network
+  shell: virsh net-define /tmp/nat-net.xml
+  when: virt_nat_network | failed
+  become: true
+
+- name: autostart nat network
+  shell: virsh net-autostart virt-nat
+  become: true
+
+- name: get network status
+  shell: virsh net-list | grep virt-nat
+  register: virt_nat_net_start
+  ignore_errors: yes
+  become: true
+  
+- name: start nat network
+  shell: virsh net-start virt-nat
+  when: virt_nat_net_start | failed
   become: true

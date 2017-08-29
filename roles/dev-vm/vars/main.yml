@@ -1,0 +1,5 @@
+---
+
+virt_nat_bridge_ip: 11.0.1.1
+virt_nat_dhcp_start: 11.0.1.100
+virt_nat_dhcp_end: 11.0.1.250

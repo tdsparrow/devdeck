@@ -1,0 +1,10 @@
+<network>
+	<name>virt-nat</name>
+	<forward mode='nat'/>
+	<bridge name='virt-nat' stp='on' delay='0'/>
+	<ip address='{{ virt_nat_bridge_ip }}' netmask='255.255.255.0'>
+		<dhcp>
+			<range start='{{ virt_nat_dhcp_start }}' end='{{ virt_nat_dhcp_end }}'/>
+		</dhcp>
+	</ip>
+</network>
