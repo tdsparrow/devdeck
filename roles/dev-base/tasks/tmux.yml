@@ -1,0 +1,14 @@
+---
+
+- name: create tmux.conf
+  file:
+    path: '{{ home_dir }}/.tmux.conf'
+    state: touch
+
+- name: config tmux terminal type
+  blockinfile:
+    dest: '{{ home_dir }}/.tmux.conf'
+    marker: "# {mark} ANSIBLE MANAGED BLOCK terminal"
+    block: |
+      set -g default-terminal "tmux-256color" 
+

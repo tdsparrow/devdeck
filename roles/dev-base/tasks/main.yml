@@ -7,7 +7,9 @@
   lineinfile: dest={{ home_dir }}/.bashrc line="export PATH=~/bin:$PATH"
 
 - include: "{{ ansible_os_family }}.yml"
-  
+
+- include: tmux.yml
+
 - name: git config
   git_config: scope=global name={{ item.name }} value={{ item.value }}
   with_items:
