@@ -1,0 +1,18 @@
+---
+
+- name: install gui apps
+  when: ansible_os_family == "Archlinux"
+  pacman: name={{ item }}
+  with_items:
+    - fcitx-im
+    - fcitx-sunpinyin
+    - i3
+    - dmenu
+    - terminus-font
+    - xorg-xinit
+    - xorg-server
+    - xorg-xrandr
+    - xterm
+    - chromium
+    - opendesktop-fonts
+  become: true
