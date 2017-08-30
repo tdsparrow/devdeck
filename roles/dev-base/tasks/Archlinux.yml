@@ -5,6 +5,7 @@
   with_items:
     - base-devel
     - unzip
+    - wget
     - tmux
     - strace
     - tcpdump
