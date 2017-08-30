@@ -1,0 +1,11 @@
+---
+
+- name: install gui apps
+  when: ansible_os_family == "Archlinux"
+  pacman: name={{ item }}
+  with_items:
+    - tcpdump
+    - bind-tools
+    - bridge-utils
+
+  become: true
