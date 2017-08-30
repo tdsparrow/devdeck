@@ -1,7 +1,7 @@
 - name: install docker
   pacman: name={{ item }}
   with_items:
-    - docker.io
+    - docker
   become: true
 
 
