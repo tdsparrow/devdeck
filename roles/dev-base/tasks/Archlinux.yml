@@ -12,4 +12,5 @@
     - clang
     - graphviz
     - zsh
+    - autojump
   become: true
