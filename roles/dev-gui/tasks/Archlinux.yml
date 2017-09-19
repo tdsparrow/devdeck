@@ -15,4 +15,6 @@
     - xterm
     - chromium
     - opendesktop-fonts
+    - mupdf
+    - glu
   become: true
