@@ -1,0 +1,9 @@
+---
+
+- name: install dev nodejs
+  pacman: name={{ item }}
+  with_items:
+    - nodejs
+    - npm
+    - uglify-js
+  become: true
