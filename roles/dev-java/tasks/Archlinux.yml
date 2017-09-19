@@ -1,0 +1,8 @@
+- name: install jdk
+  pacman: name={{ item }}
+  with_items:
+    - jdk8-openjdk
+    - icedtea-web
+    - maven
+  become: true
+
