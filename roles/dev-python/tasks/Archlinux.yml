@@ -1,0 +1,8 @@
+---
+
+- name: install docker
+  pacman: name={{ item }}
+  with_items:
+    - python-virtualenv
+    - python2-virtualenv
+  become: true
