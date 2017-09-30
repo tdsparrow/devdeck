@@ -9,6 +9,7 @@
     - nfs-utils
     - rsync
     - virt-manager
+    - virt-viewer
     - firewalld
     - dnsmasq
   become: true
@@ -38,7 +39,7 @@
   shell: virsh net-list --all | grep virt-nat
   register: virt_nat_network
   ignore_errors: yes
-  become: true
+
 
 - name: create nat network xml file
   template:
@@ -48,19 +49,21 @@
 - name: create nat network
   shell: virsh net-define /tmp/nat-net.xml
   when: virt_nat_network | failed
-  become: true
 
 - name: autostart nat network
   shell: virsh net-autostart virt-nat
+
+- name: create bridge
+  shell: brctl addbr virt-nat
   become: true
+  ignore_errors: yes
 
 - name: get network status
   shell: virsh net-list | grep virt-nat
   register: virt_nat_net_start
   ignore_errors: yes
-  become: true
   
 - name: start nat network
   shell: virsh net-start virt-nat
   when: virt_nat_net_start | failed
-  become: true
+  ignore_errors: yes
