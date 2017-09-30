@@ -1,0 +1,8 @@
+---
+
+- name: install tools
+  pacman: name={{ item }}
+  with_items:
+    - jq
+    - fzf
+  become: true
