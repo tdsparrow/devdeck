@@ -1,0 +1,14 @@
+---
+
+- name: install go pkgs
+  pacman: name={{ item }}
+  with_items:
+    - go
+    - go-tools
+  become: true
+
+
+- name: install go pkgs with go get
+  shell: go get {{ item }}
+  with_items:
+    - github.com/rogpeppe/godef
