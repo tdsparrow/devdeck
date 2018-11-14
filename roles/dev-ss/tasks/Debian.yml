@@ -1,0 +1,45 @@
+---
+
+- name: install shadowsocks
+  apt: name={{ item }}
+  with_items:
+    - libsodium18
+  become: true
+
+- name: install shadowsocks
+  pip: name={{ item }}
+  with_items:
+    - shadowsocks
+  become: true
+
+- name: load ss accounts
+  set_fact:
+    ss_ports: "{{ lookup('file', 'files/ports.yaml') | from_yaml }}"
+
+- name: ss config
+  template:
+    src: "files/config.json.template"
+    dest: "/etc/shadowsocks/ss_config"
+  become: true
+
+- name: ss service
+  copy:
+    src: "files/ssserver.service"
+    dest: "/lib/systemd/system/"
+  become: true
+
+
+- name: reload systemd
+  systemd:
+    name: ssserver
+    daemon_reload: yes
+    enabled: yes
+  become: true
+
+
+- name: restart ss
+  systemd:
+    name: ssserver.service
+    enabled: yes
+    state: restarted
+  become: true

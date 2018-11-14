@@ -1,0 +1,12 @@
+{
+    "server":"0.0.0.0",
+    "server_port":7033,
+    "local_port":1080,
+    "port_password": {
+    {% for conf in ss_ports %}
+        "{{ conf.port }}": "{{ conf.passwd }}" {{ "," if not loop.last else "" }}
+    {% endfor %}
+    },
+    "timeout":60,
+    "method":"chacha20"
+}

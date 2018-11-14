@@ -1,0 +1,15 @@
+[Unit]
+Description=Shadowsocks Default Server Service
+Documentation=man:shadowsocks
+After=network.target
+
+[Service]
+Type=simple
+User=nobody
+LimitNOFILE=32768
+ExecStart=/usr/bin/ssserver  --manager-address /var/run/shadowsocks/manager.sock -c /etc/shadowsocks/ss_config
+ExecStopPost=/bin/rm /var/run/shadowsocks/manager.sock
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

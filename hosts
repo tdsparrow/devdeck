@@ -1,2 +1,5 @@
-devdeck ansible_host=localhost  ansible_python_interpreter=/usr/bin/python2 devuser=leon
-ss-linode ansible_host=172.104.97.18  ansible_python_interpreter=/usr/bin/python2 ansible_user=leon
+devdeck ansible_host=localhost  ansible_python_interpreter=/usr/bin/python devuser=leon
+ss-linode ansible_host=172.104.74.143  ansible_python_interpreter=/usr/bin/python2 ansible_user=leon
+ss-linode-sg ansible_host=172.104.188.200 ansible_python_interpreter=/usr/bin/python2 ansible_user=root
+
+ernai  ansible_host=192.168.10.2  ansible_python_interpreter=/usr/bin/python devuser=leon

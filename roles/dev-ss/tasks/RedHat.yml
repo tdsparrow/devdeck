@@ -1,0 +1,50 @@
+---
+- name: install dep
+  yum:
+    name: libsodium
+  become: true
+
+- name: install shadowsocks
+  pip: name={{ item }}
+  with_items:
+    - shadowsocks
+  become: true
+
+- name: etc folder
+  file:
+    path: "/etc/shadowsocks"
+    state: directory
+  become: true
+
+- name: crate sock dir
+  file:
+    name: /var/run/shadowsocks/
+    state: directory
+    owner: nobody
+  become: true
+
+- name: ss config
+  copy:
+    src: "files/config.json"
+    dest: "/etc/shadowsocks/ss_config"
+  become: true
+
+- name: ss service
+  copy:
+    src: "files/ssserver.service"
+    dest: "/lib/systemd/system/"
+  become: true
+
+- name: reload systemd
+  systemd:
+    name: ssserver
+    daemon_reload: yes
+  become: true
+
+
+- name: restart ss
+  systemd:
+    name: ssserver.service
+    enabled: yes
+    state: started
+  become: true

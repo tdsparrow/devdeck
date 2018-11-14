@@ -1,5 +1,5 @@
 ---
 
-- hosts: ss-linode
+- hosts: ss-*
   roles:
-  - dev-gfw
+  - dev-ss
