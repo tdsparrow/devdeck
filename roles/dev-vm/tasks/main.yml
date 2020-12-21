@@ -20,25 +20,27 @@
     name: firewalld
     enabled: yes
   become: true
-  
+
 - name: start libvirtd
   systemd:
     state: started
     name: libvirtd
     enabled: yes
   become: true
-  
+
 
 - name: update user group
   user:
     name: "{{ devuser }}"
     append: yes
     groups: libvirt
+  become: true
 
 - name: find nat network
   shell: virsh net-list --all | grep virt-nat
   register: virt_nat_network
   ignore_errors: yes
+  become: true  
 
 
 - name: create nat network xml file
@@ -48,22 +50,20 @@
 
 - name: create nat network
   shell: virsh net-define /tmp/nat-net.xml
-  when: virt_nat_network | failed
+  when: virt_nat_network is failed
+  become: true
 
 - name: autostart nat network
   shell: virsh net-autostart virt-nat
-
-- name: create bridge
-  shell: brctl addbr virt-nat
   become: true
-  ignore_errors: yes
 
 - name: get network status
   shell: virsh net-list | grep virt-nat
   register: virt_nat_net_start
   ignore_errors: yes
-  
+
 - name: start nat network
   shell: virsh net-start virt-nat
   when: virt_nat_net_start | failed
   ignore_errors: yes
+  become: true

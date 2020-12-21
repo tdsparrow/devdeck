@@ -3,7 +3,9 @@
 - name: install shadowsocks
   apt: name={{ item }}
   with_items:
-    - libsodium18
+    - libsodium23
+    - python-pip
+    - python-setuptools
   become: true
 
 - name: install shadowsocks
@@ -15,6 +17,12 @@
 - name: load ss accounts
   set_fact:
     ss_ports: "{{ lookup('file', 'files/ports.yaml') | from_yaml }}"
+
+- name: ss config dir
+  file:
+    dest: "/etc/shadowsocks"
+    state: directory
+  become: true
 
 - name: ss config
   template:
@@ -28,6 +36,12 @@
     dest: "/lib/systemd/system/"
   become: true
 
+- name: manage socks folder
+  file:
+    path: /var/run/shadowsocks
+    state: directory
+    owner: nobody
+  become: true
 
 - name: reload systemd
   systemd:
@@ -42,4 +56,10 @@
     name: ssserver.service
     enabled: yes
     state: restarted
+  become: true
+
+- name: bbr congestion
+  sysctl:
+    name: net.ipv4.tcp_congestion_control
+    value: bbr
   become: true

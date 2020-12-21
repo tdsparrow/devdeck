@@ -5,4 +5,7 @@
   with_items:
     - jq
     - fzf
+    - autojump
+    - fasd
   become: true
+

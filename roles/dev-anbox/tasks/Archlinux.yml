@@ -1,0 +1,9 @@
+---
+
+- name: aur tools
+  aur: name={{ item }} skip_installed=true
+  with_items:
+    - anbox-modules-dkms-git
+    
+  become: true
+  become_user: aur_builder

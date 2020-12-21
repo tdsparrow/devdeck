@@ -1,0 +1,8 @@
+---
+
+- name: install dev nodejs
+  pacman: name={{ item }}
+  with_items:
+    - r
+
+  become: true

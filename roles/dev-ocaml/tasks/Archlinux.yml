@@ -1,0 +1,14 @@
+---
+
+- name: install ocaml apps
+  pacman: name={{ item }}
+  with_items:
+    - ocaml
+    - merlin
+    - opam
+  become: true
+
+# - name: aur tools
+#   aur: name={{ item }} skip_installed=true
+#   with_items:
+#     - ocaml-utop

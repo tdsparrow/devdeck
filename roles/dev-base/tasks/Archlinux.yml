@@ -12,5 +12,26 @@
     - clang
     - graphviz
     - zsh
-    - autojump
+    - bc
+    - cmake
+    - git
+    - net-tools
+    - openssh-askpass
+    - expect
   become: true
+
+- user: name=aur_builder
+  become: true
+
+- lineinfile:
+     path: /etc/sudoers.d/aur_builder-allow-to-sudo-pacman
+     state: present
+     line: "aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman"
+     validate: /usr/sbin/visudo -cf %s
+     create: yes
+  become: true
+
+- name: recv keys
+  command: gpg --recv-keys 465022E743D71E39
+  become: true
+  become_user: aur_builder

@@ -1,0 +1,8 @@
+---
+
+- name: install snap
+  aur:
+    name: snapd-git
+    skip_installed: true
+  become: true
+  become_user: aur_builder

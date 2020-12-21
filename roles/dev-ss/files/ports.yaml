@@ -1,14 +1,22 @@
 - port: 7033
   passwd: "dedqwfdfjakdjdq"
-# gjthrd
-- port: 7100
-  passwd: "eida13b12xd"
 # lijun
 - port: 7101
   passwd: "d93cbx178d"
-# change
+# chang
 - port: 7102
   passwd: "ia02nc29xq"
 # openwrt
 - port: 7103
   passwd: "i19a;1b83"
+# android&iOS
+- port: 7104
+  passwd: "d91idn18ce"
+# gjthrd
+- port: 7105
+  passwd: "eida13b12xd"
+# chenzhaowei
+- port: 7106
+  passwd: "191djjnd018ce"
+
+  

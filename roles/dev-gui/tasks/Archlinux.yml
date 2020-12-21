@@ -17,4 +17,13 @@
     - opendesktop-fonts
     - mupdf
     - glu
+    - rxvt-unicode
   become: true
+
+#- name: aur tools
+#  aur: name={{ item }} skip_installed=true
+#  with_items:
+#    - cerebro
+
+#  become: true
+#  become_user: aur_builder

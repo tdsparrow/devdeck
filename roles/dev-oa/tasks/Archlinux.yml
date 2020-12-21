@@ -1,0 +1,9 @@
+---
+
+- name: install mail apps
+  pacman: name={{ item }}
+  with_items:
+    - mutt
+    - openconnect
+    - rdesktop
+  become: true

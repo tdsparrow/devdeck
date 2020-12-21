@@ -5,9 +5,10 @@
   become: true
 
 - name: fetch emacs conf
-  git: repo=https://github.com/tdsparrow/emacs-config.git
+  git: repo=git@github.com:tdsparrow/emacs-config.git
+       accept_hostkey=true
        version=unified
-       dest={{ src_dir }}/emacs-config
+       dest={{ src_dir }}/personal/emacs-config
        update=yes
 
 - name: create emacs conf dir
@@ -16,13 +17,11 @@
 - name: enable emacs conf
   file: src={{ item.src }} dest={{ item.dest }} state=link
   with_items:
-    - src: '{{ src_dir }}/emacs-config/.emacs'
+    - src: '{{ src_dir }}/personal/emacs-config/.emacs'
       dest: '{{ home_dir }}/.emacs'
-    - src: '{{ src_dir }}/emacs-config/el-setup'
+    - src: '{{ src_dir }}/personal/emacs-config/el-setup'
       dest: '{{ home_dir }}/.emacs.d/el-setup'
-    - src: '{{ src_dir }}/emacs-config/local'
+    - src: '{{ src_dir }}/personal/emacs-config/local'
       dest: '{{ home_dir }}/.emacs.d/local'
-    - src: '{{ src_dir }}/emacs-config/init.d'
+    - src: '{{ src_dir }}/personal/emacs-config/init.d'
       dest: '{{ home_dir }}/.emacs.d/init.d'
-      
-

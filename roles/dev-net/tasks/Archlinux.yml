@@ -7,5 +7,6 @@
     - tcpdump
     - bind-tools
     - bridge-utils
+    - mitmproxy
 
   become: true

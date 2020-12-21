@@ -1,5 +1,12 @@
 devdeck ansible_host=localhost  ansible_python_interpreter=/usr/bin/python devuser=leon
+
+[ss]
 ss-linode ansible_host=172.104.74.143  ansible_python_interpreter=/usr/bin/python2 ansible_user=leon
-ss-linode-sg ansible_host=172.104.188.200 ansible_python_interpreter=/usr/bin/python2 ansible_user=root
+ss-linode-sg-jh ansible_host=139.162.16.115 ansible_python_interpreter=/usr/bin/python2 ansible_user=leon
+ss-linode-sg-lr ansible_host=103.3.62.239 ansible_python_interpreter=/usr/bin/python2 ansible_user=leon
+ss-vultr-fk-lr ansible_host=45.76.34.45 ansible_python_interpreter=/usr/bin/python2 ansible_user=leon
+bandwagon ansible_host=104.128.82.67 ansible_python_interpreter=/usr/bin/python2 ansible_user=leon
 
 ernai  ansible_host=192.168.10.2  ansible_python_interpreter=/usr/bin/python devuser=leon
+
+
